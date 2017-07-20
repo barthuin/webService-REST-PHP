@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Playlist" table="playlist">
+    <indexes>
+      <index name="idCanal" columns="idCanal"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idPlaylist" columns="idPlaylist"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idplaylist" type="string" column="idPlaylist" length="34" nullable="false"/>
+    <field name="descripcion" type="string" column="descripcion" length="255" nullable="false"/>
+    <field name="ingles" type="boolean" column="ingles" nullable="false"/>
+    <field name="titulo" type="string" column="titulo" length="255" nullable="false"/>
+    <field name="imagen" type="string" column="imagen" length="255" nullable="false"/>
+    <many-to-one field="idcanal" target-entity="Canales">
+      <join-columns>
+        <join-column name="idCanal" referenced-column-name="Id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,22 @@
+!SESSION 2017-07-20 17:03:40.860 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.php.product -keyring /Users/dani/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.php.product -keyring /Users/dani/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2017-07-20 17:05:38.707
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.php.debug.core 1 1001 2017-07-20 17:06:17.256
+!MESSAGE PHP executable /resources/php5/php not found neither in plugin org.zend.php.debug.debugger nor in fragments attached to it
+
+!ENTRY org.eclipse.php.debug.core 1 1001 2017-07-20 17:06:17.335
+!MESSAGE PHP executable /resources/php5/php-cgi not found neither in plugin org.zend.php.debug.debugger nor in fragments attached to it
+
+!ENTRY org.eclipse.php.debug.core 1 1001 2017-07-20 17:06:17.336
+!MESSAGE PHP executable /resources/php53/php not found neither in plugin org.zend.php.debug.debugger nor in fragments attached to it
+
+!ENTRY org.eclipse.php.debug.core 1 1001 2017-07-20 17:06:17.337
+!MESSAGE PHP executable /resources/php53/php-cgi not found neither in plugin org.zend.php.debug.debugger nor in fragments attached to it
