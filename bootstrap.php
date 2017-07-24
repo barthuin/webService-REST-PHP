@@ -4,6 +4,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 require_once "vendor/autoload.php";
+require_once "./config/config.php";
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
 $isDevMode = true;
@@ -15,10 +16,10 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/model
 // database configuration parameters
 $conn = array(
     'driver'   => 'pdo_mysql',
-    'host'     => 'localhost',
-    'user'     => 'root',
-    'password' => 'root',
-    'dbname'   => 'yoga',
+    'host'     => DB_HOST,
+    'user'     => DB_USERNAME,
+    'password' => DB_PASSWORD,
+    'dbname'   => DB_NAME,
     'charset'  => 'UTF8',
 );
 

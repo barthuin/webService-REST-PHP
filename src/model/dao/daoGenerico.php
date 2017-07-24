@@ -24,7 +24,9 @@ abstract class daoGenerico{
         return $this->entityManager;
     }
 
-	function listAll($nombre){
+    abstract public function listAll();
+
+	protected function listarTodo($nombre){
 		$repositorio = 'model\dto\\'.$nombre;
 	    $repository = $this->getEntityManager()->getRepository($repositorio);
 	        //->find($id);
@@ -39,8 +41,20 @@ abstract class daoGenerico{
 	    return $entityList;
 	}
 
-	function findByIdYoutube($nombre, $entity){
-		$existe = true;
+	abstract public function findById($id);
+
+	function buscarPorId($nombre, $id){
+		$repositorio = 'model\dto\\'.$nombre;
+	    $repository = $this->getEntityManager()->getRepository($repositorio);
+		
+	    $entity = $repository->find($id);
+		
+	    return $entity;
+	}
+
+	abstract public function findByIdYoutube($entity);
+
+	function buscarPorIdYoutube($nombre, $entity){
 		$repositorio = 'model\dto\\'.$nombre;
 	    $repository = $this->getEntityManager()->getRepository($repositorio);
 	        //->find($id);
@@ -50,7 +64,9 @@ abstract class daoGenerico{
 	    return $entity;
 	}	
 
-	function insert($entity){
+	abstract public function insert($entity);
+
+	function insertar($entity){
 	    $entityM= $this->getEntityManager();
 	        //->find($id);
 	    $entityM->merge($entity);

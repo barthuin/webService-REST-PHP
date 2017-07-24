@@ -61,6 +61,13 @@ class ComposerStaticInit7b6b5b806e1323b3eda854399461ba6b
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Slim' => 
+            array (
+                0 => __DIR__ . '/..' . '/slim/slim',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\ORM\\' => 

@@ -30,7 +30,6 @@ function getVideosByPlaylists($idPlaylist) {
         return $obj;
     }
 
-	include_once('./src/model/dao/daoGenerico.php');
 	include_once('./src/model/dao/daoCanal.php');
 	include_once('./src/model/dao/daoPlaylist.php');
 	include_once('./src/model/dao/daoVideo.php');
@@ -40,7 +39,7 @@ function getVideosByPlaylists($idPlaylist) {
 	$daoCanal = new daoCanal();
 	$daoPlaylist = new daoPlaylist();
 	$daoVideo = new daoVideo();
-    $canales = $daoCanal->listAll('Canales');
+    $canales = $daoCanal->listAll();
 
     foreach ($canales as $canal) {
 	    echo ($canal->getNombre()."\n");
@@ -60,13 +59,14 @@ function getVideosByPlaylists($idPlaylist) {
 	    	
 	    	$playlist = new model\dto\Playlist($idYoutube, $descripcion, $ingles, $titulo, $imagen, $idcanal);
 
-	    	$playlistBD = $daoPlaylist->findByIdYoutube('Playlist',$playlist);
+	    	$playlistBD = $daoPlaylist->findByIdYoutube($playlist);
+	    	echo ("Comprobando Playlist: ".$playlist->getTitulo()."\n");
 
 	    	if(!$playlistBD){
 	    		//si no existe, se crea
-	    		echo ("Playlist: ".$playlist->getTitulo()."\n");
+	    		echo ("Insertando Playlist: ".$playlist->getTitulo()."\n");
 	    		$daoPlaylist->insert($playlist);
-	    		$playlistBD = $daoPlaylist->findByIdYoutube('Playlist',$playlist);
+	    		$playlistBD = $daoPlaylist->findByIdYoutube($playlist);
 	    	}
 	    	//actualizamos el objeto $playlist para guardar el id generado
 	    	$playlist->setId($playlistBD->getId());
@@ -88,10 +88,10 @@ function getVideosByPlaylists($idPlaylist) {
 		    		$video = new model\dto\Videos($idYoutube, $titulo, $imagen, $idPlaylist);
 
 		    		//buscamos en BD si ya existe ese video
-		    		$existe = $daoVideo->findByIdYoutube('Videos',$video);
+		    		$existe = $daoVideo->findByIdYoutube($video);
 
 			    	if(!$existe){
-			    		echo ("-->".$video->getTitulo()."\n");
+			    		echo ("-->".$video->getIdYoutube()." ".$video->getTitulo()."\n");
 			    		$daoVideo->insert($video);
 			    	}	
 				}
